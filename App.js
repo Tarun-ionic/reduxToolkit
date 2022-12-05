@@ -5,7 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Provider } from 'react-redux'
 import { store } from './src/store/index'
 import Home from './src/screens/Home'
+import Cart from './src/screens/cart'
 import Profile from './src/screens/Profile'
+
 import ActionBarImage from './src/screens/actionBarImage';
 
 console.disableYellowBox = true;
@@ -40,6 +42,16 @@ const App = () =>  {
               backgroundColor: '#34deeb'
             },}}
           />
+            <Stack.Screen 
+            name="Cart" 
+            component={Cart}
+            options={{ title: 'Cart' ,
+            headerTintColor: '#fff',
+              headerStyle: {
+              backgroundColor: '#34deeb'
+            },}}
+          />
+          
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
