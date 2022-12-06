@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native';
 const ActionBarImage = () => {
   const navigation = useNavigation();
   const apiData = useSelector(state=>state.reducer.data);
-  console.log('apiData', apiData)
   const cartLength  = apiData?.filter((item)=>item.cart).length;
 
   return (

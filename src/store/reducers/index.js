@@ -28,7 +28,6 @@ export const getTestAPIData = createAsyncThunk("GET_TEST_API_DATA",
                     getObj.like = true;
                 }
                 let findInd = Arr.findIndex(item => item.id == action.payload.id);
-                console.log('getObj', getObj)
                 Arr[findInd] = getObj;
                 state.data = Arr;
             },
@@ -42,7 +41,6 @@ export const getTestAPIData = createAsyncThunk("GET_TEST_API_DATA",
                     getObj.cart = true;
                 }
                 let findInd = Arr.findIndex(item => item.id == action.payload.id);
-                console.log('getObj', getObj)
                 Arr[findInd] = getObj;
                 state.data = Arr;
             },

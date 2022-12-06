@@ -4,86 +4,51 @@ import { StyleSheet, Text, View, Button, FlatList, Image, TouchableOpacity } fro
 
 export default Cart = (props) => {
     const apiData = useSelector((state) => state.reducer.data);
+    const cartData = apiData?.filter((item) => item.cart);
 
     return (
         <View style={styles.main_container}>
-           <Text>Test</Text>
+            <FlatList
+                data={cartData}
+                showsVerticalScrollIndicator={false}
+                keyExtractor={this._keyExtractor}
+                renderItem={({ item }) =>
+                    <View style={styles.listView}>
+                        <View style={styles.imageView}>
+                            <Image source={{ uri: item.image_url }}
+                            resizeMode='contain' style={styles.image} />
+                        </View>
+                        <View style={{alignItems:'flex-start', marginLeft:10}}>
+                            <Text>{item.name}</Text>
+                            <Text>{item.tagline}</Text>
+                        </View>
+                    </View>
+                }
+            />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    main_container: {
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    flatlist_view: {
-        paddingVertical: 10,
-        borderWidth: 1,
-        borderColor: 'black'
-    },
-    detail_box: {
-        elevation: 1,
-        backgroundColor: 'white',
-        borderRadius: 10,
-        width: '90%',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 50,
-        alignSelf: 'center',
-        paddingVertical: 20
-    },
-    button_view: {
+    listView: {
+        marginTop: 10,
+        marginBottom: 5,
         flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        width: '90%'
+        borderBottomWidth:1,
+        borderBottomColor:'#34deeb'
     },
-    button: {
-        backgroundColor: '#34deeb',
-        paddingVertical: 5,
-        paddingHorizontal: 15,
-        borderRadius: 10,
-        marginTop: 20
-    },
-    textStyle: {
-        fontSize: 14,
-        fontWeight: 'bold'
-    },
-    title: {
-        fontWeight: 'bold',
-        fontSize: 16
-    },
-    tagline: {
-        fontWeight: '600',
-        fontSize: 14
-    },
-    description: {
-        fontWeight: '400',
-        fontSize: 12,
-        textAlign: 'center'
+    main_container: {
+        height: '100%',
     },
     image: {
-        width: 400,
-        height: 480
+        width: 120,
+        height: 100
     },
-    header : {
-        paddingHorizontal:10,
-        height: '5%',
-        width:'100%',
-        justifyContent: 'space-between',
-        alignItems:'center',
-        flexDirection : 'row'
-    }, 
-    headerText : {
-        fontSize : 25,
-        fontWeight : 'bold'
-    }
+    imageView : {
+        height:100,
+        width:100,
+        marginBottom:10
+    },
+
 });
 
